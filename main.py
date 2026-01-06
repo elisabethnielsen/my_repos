@@ -1,7 +1,7 @@
 import torch
 import typer
 from data_solution import corrupt_mnist
-from model import MyAwesomeModel
+from model_solution import MyAwesomeModel
 from torch import nn, optim
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,9 +9,6 @@ import numpy as np
 app = typer.Typer()
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
-
-
-
 
 
 @app.command()
@@ -29,7 +26,6 @@ def train(lr: float = 1e-3, batch_size: int = 32, epochs: int = 10) -> None:
     train_set, _ = corrupt_mnist()
     train_dataloader = torch.utils.data.DataLoader(train_set, batch_size=batch_size)
 
-    training_losses=[]
 
     statistics = {"train_loss": [], "train_accuracy": []}
 
